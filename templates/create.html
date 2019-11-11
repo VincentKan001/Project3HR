@@ -11,17 +11,11 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    {% for d in dep %}
-    
-     <p>{{d.department_name}}</p>
-     <p>{{d.employee_name}}</p>
-     <p>{{d.employee_position}}</p>
-     <p>{{d.contact_no}}</p>
-     <p>{{d.out_of_office}}</p>
-     
-     
-    {% endfor %}
+    <h1>Create, world!</h1>
+    <form method="POST">
+      <input type="text" name="department_name"/>
+      <button class="btn btn-primary">Submit</button>
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

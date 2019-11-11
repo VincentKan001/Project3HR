@@ -17,10 +17,20 @@ department = conn[DATABASE_NAME][COLLECTION_DEPARTMENT]
 
 
 @app.route('/')
-def hello():
+def index():
     data = department.find({})
     
     return render_template('index.html', dep=data)
+
+
+@app.route('/create')
+def create():
+    return render_template('create.html')
+
+@app.route('/create', methods=["POST"])
+def insert():
+    
+    
 
 
 if __name__ == '__main__':
