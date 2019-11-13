@@ -11,17 +11,62 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    {% for d in dep %}
-    
-     <p>{{d.department_name}}</p>
-     <p>{{d.employee_name}}</p>
-     <p>{{d.employee_position}}</p>
-     <p>{{d.contact_no}}</p>
-     <p>{{d.out_of_office}}</p>
-     
-     
-    {% endfor %}
+    <h1>Employee Directory</h1>
+    <div class='container'>
+        <a href="add-employee" class="btn btn-primary">
+            Add New
+        </a>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>
+                        Department Name
+                    </th>
+                    <th>
+                        Employee Name
+                    </th>
+                    <th>
+                        Employee Position
+                    </th>
+                    <th>
+                        Contact Number
+                    </th>
+                    <th>
+                        Out Of Office
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+            {%for each_result in results %}
+            <tr>
+                <td>
+                    {{each_result['department_name']}}
+                </td>
+                <td>
+                    {{each_result['employee_name']}}
+                </td>
+                <td>
+                    {{each_result['employee_position']}}
+                </td>
+                <td>
+                    {{each_result['contact_no']}}
+                </td>
+                <td>
+                    {{each_result['out_of_office']}}
+                </td>
+                <td>
+                    <a href="edit-employee/{{each_result['_id']}}">Edit</a>
+                </td>
+                <td>
+                    <a href="delete-employee/{{each_result['_id']}}">Delete</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
