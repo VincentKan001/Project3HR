@@ -19,6 +19,47 @@ def index():
     conn = get_connection()
     department = conn[DATABASE_NAME]['department'].find()
     return render_template('index.html', results=department)
+
+@app.route('/search-employee/<department_id>') 
+def search_employee():
+    department_name = request.args.get('department_name')
+    employee_name = request.args.get('employee_name')
+    employee_position = request.args.get('employee_position')
+    contact_no = request.args.get('contact_no')
+    out_of_office = request.args.get('out_of_office')
+    critera= {} 
+    
+    if department_name and department_name != 'department_name':
+        critera['department_name'] = department_name
+    else:
+        department_name = 'department_name'
+        
+    if employee_name and employee_name != 'employee_name':
+        critera['employee_name'] = employee_name
+    else:
+        employee_name = 'employee_name'
+        
+    if employee_position and employee_position != 'employee_position':
+        critera['employee_position'] = employee_position
+    else:
+        employee_position = 'employee_position'
+        
+    if contact_no and contact_no != 'contact_no':
+        critera['contact_no'] = contact_no
+    else:
+        contact_no = 'contact_no'
+    
+    if out_of_office and out_of_office != 'out_of_office':
+        critera['out_of_office'] = out_of_office
+    else:
+        out_of_office = 'out_of_office'
+        
+    conn = get_connection()
+    conn[DATABASE_NAME]['department'].find(critera)
+    
+    return render_template('search_employee.html', department_name=department_name, employee_name=employee_name, employee_position=employee_position, contact_no=contact_no, out_of_office=out_of_office)
+    
+    
     
 @app.route('/add-employee')
 def show_add_employee_form():
