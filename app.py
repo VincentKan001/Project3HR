@@ -128,6 +128,11 @@ def delete_employee(department_id):
     
     return redirect("/")
 
+@app.route('/welcome')
+def show_welcome():
+    return render_template('welcome.html')
+    
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
